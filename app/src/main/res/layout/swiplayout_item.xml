@@ -1,62 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<!-- 之间作为根布局 不然点击事件无效 ? -->
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="5dp">
+    <!-- 侧滑显示的布局信息 -->
+    <LinearLayout
+        android:id="@+id/bottom_wrapper"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:background="#f6ed1139"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <com.daimajia.swipe.SwipeLayout
-        android:id="@+id/swipe"
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
-        <!-- 侧滑显示的布局信息 -->
-        <LinearLayout
-            android:id="@+id/bottom_wrapper"
-            android:layout_width="160dp"
+        <TextView
+            android:id="@+id/tv_bottom_delete"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#f6ed1139"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"/>
 
-            <TextView
-                android:id="@+id/tv_bottom_delete"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="删除"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#5e5d5d"/>
 
-            <View
-                android:layout_width="2dp"
-                android:background="#5e5d5d"
-                android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_bottom_upload"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="上架"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"/>
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_bottom_upload"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="上架"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"/>
-        </LinearLayout>
+    <!-- 正常显示的信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:padding="10dp">
 
-        <!-- 正常显示的信息 -->
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_message"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:padding="10dp">
-
-            <TextView
-                android:id="@+id/tv_message"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="正常文本"
-                android:textSize="25sp"/>
-        </LinearLayout>
-    </com.daimajia.swipe.SwipeLayout>
-</LinearLayout>
+            android:gravity="center"
+            android:text="正常文本"
+            android:textSize="25sp"/>
+    </LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

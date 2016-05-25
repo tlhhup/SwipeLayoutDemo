@@ -77,6 +77,9 @@ public class MySwipeAdapter extends BaseSwipeAdapter {
 
     private OnItemViewClickListener mOnItemViewClickListener;
 
+    /** 添加item中子控件的点击事件
+     * @param onItemViewClickListener
+     */
     public void setOnItemViewClickListener(OnItemViewClickListener onItemViewClickListener) {
         mOnItemViewClickListener = onItemViewClickListener;
     }
@@ -84,6 +87,10 @@ public class MySwipeAdapter extends BaseSwipeAdapter {
     //将点击事件抛出交由外部处理
     public interface OnItemViewClickListener{
 
+        /**
+         * @param view 点击的view
+         * @param potion 点击的位置
+         */
        void onItemViewClick(View view,int potion);
 
     }

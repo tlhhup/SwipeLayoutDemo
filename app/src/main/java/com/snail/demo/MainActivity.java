@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.daimajia.swipe.util.Attributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +28,12 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<50;i++){
             datas.add("这是第"+i+"条数据");
         }
+//        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, datas);
+//        mListView.setAdapter(adapter);
         //使用baseSwipeAdapter
         final MySwipeAdapter adapter = new MySwipeAdapter(this, datas);
         mListView.setAdapter(adapter);
+        adapter.setMode(Attributes.Mode.Single);
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //添加item的点击事件处理
         adapter.setOnItemViewClickListener(new MySwipeAdapter.OnItemViewClickListener() {
             @Override
             public void onItemViewClick(View view, int potion) {
@@ -56,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,adapter.getItem(potion).toString(),Toast.LENGTH_LONG).show();
                         break;
                 }
+            }
+        });
+        //listview的item点击事件
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,"setOnItemClickListener"+adapter.getItem(position).toString(),Toast.LENGTH_LONG).show();
             }
         });
     }
