@@ -1,5 +1,6 @@
 package com.snail.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,"setOnItemClickListener"+adapter.getItem(position).toString(),Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(MainActivity.this,SwipeListViewActivity.class);
+                startActivity(intent);
             }
         });
     }
